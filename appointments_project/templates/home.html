@@ -1,0 +1,33 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="text-center py-5">
+    <h1 class="mb-4">Welcome to DocApp</h1>
+    {% if user.is_authenticated %}
+        <p>Hello, {{ user.username }}!</p>
+        <a href="{% url 'appointment_create' %}" class="btn btn-primary">Book Appointment</a>
+    {% else %}
+        <p>Please login or register to book appointments.</p>
+        <a href="{% url 'login' %}" class="btn btn-primary me-2">Login</a>
+        <a href="{% url 'register' %}" class="btn btn-outline-primary">Register</a>
+    {% endif %}
+</div>
+<div class="row">
+    <h2 class="mb-4 text-center">Meet Our Doctors</h2>
+    {% for doctor in doctors %}
+        <div class="col-md-4">
+            <div class="card h-100">
+                <img src="{{ doctor.profile_image.url }}" class="card-img-top" alt="{{ doctor.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ doctor.name }}</h5>
+                    <p class="card-text">{{ doctor.specialization }}</p>
+                    <p class="text-muted">Experience: {{ doctor.experience }} years</p>
+                    <p class="text-muted">Rating: ⭐{{ doctor.rating }}</p>
+                    <a href="{% url 'book_appointment' doctor.id %}" class="btn btn-primary">Book Appointment</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

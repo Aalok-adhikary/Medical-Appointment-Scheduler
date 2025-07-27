@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+
+{% block doctor %}
+<div class="row">
+    <h2 class="mb-4 text-center">Meet Our Doctors</h2>
+    {% for doctor in doctors %}
+        <div class="col-md-4">
+            <div class="card h-100">
+                <img src="{{ doctor.profile_image.url }}" class="card-img-top" alt="{{ doctor.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ doctor.name }}</h5>
+                    <p class="card-text">{{ doctor.specialization }}</p>
+                    <p class="text-muted">Experience: {{ doctor.experience }} years</p>
+                    <p class="text-muted">Rating: ⭐{{ doctor.rating }}</p>
+                    <a href="#" class="btn btn-primary">Book Appointment</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock doctor %}
