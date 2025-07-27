@@ -1,0 +1,14 @@
+How to run this project
+- Download the repository (as a ZIP file from GitHub or by cloning it).
+- Extract the ZIP file if downloaded.
+- Open a terminal and navigate to the project folder.
+- Install the required libraries:
+  - If no requirements file exists: `pip install django`
+- Apply database migrations:
+  - `python manage.py makemigrations`
+  - `python manage.py migrate`
+- (Optional) Create a superuser:
+  - `python manage.py createsuperuser`
+- Start the development server:
+  - `python manage.py runserver`
+- Open a browser and access the app at `http://127.0.0.1:8000/`.
